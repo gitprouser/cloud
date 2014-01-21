@@ -17,3 +17,4 @@ In the recipe for that cookbook, create a `cookbook_file` resource to configure 
       group 'root'
       mode 0600
     end
+
