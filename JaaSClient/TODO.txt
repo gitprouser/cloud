@@ -1,0 +1,23 @@
+Client:
+=======
+
+1.) Update the VM agent. Self Patching or updation - downloading the new 
+    bits and restart vm agent.
+
+2.) Execute the given command.
+
+3.) Abort the execution based on JobID.
+
+4.) Send current Status 
+    4.1) Number of jobs running
+    4.2) Version of number of VM agent
+
+5.) Response to poll. Polling for new jobs
+
+6.) Get execution logs for the process.
+
+Server side:
+=============
+
+1.) Dispatch the job. 
+2.) wait for execution to complete
