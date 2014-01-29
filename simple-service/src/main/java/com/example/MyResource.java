@@ -16,9 +16,9 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 @Path("myresource")
 public class MyResource {
-    private String[] commands = {"ls -a", "du -h", "whoami", 
+    private String[] commands = {"ls -a", "du -h", "whoami",
                         "echo \"guest\" | sudo -S du -h /tmp"};
-    private String script = "def fib(n):\n\tif n == 1:\n\t\treturn 1\n\tif n==0:\n\t\treturn 0\n\telse:\n\t\treturn fib(n-1) + fib(n-2)\nprint fib(%s)"; 
+    private String script = "def fib(n):\n\tif n == 1:\n\t\treturn 1\n\tif n==0:\n\t\treturn 0\n\telse:\n\t\treturn fib(n-1) + fib(n-2)\nprint fib(%s)";
     private boolean isCompleted = false;
     private static int incr = 0;
     private static int N = 0;
@@ -42,7 +42,7 @@ public class MyResource {
         System.out.println(incr);
         val = commands[incr++];
       }
-      return val; 
+      return val;
     }
 
     @GET
@@ -51,16 +51,15 @@ public class MyResource {
     public String getScript() {
       UUID idOne = UUID.randomUUID();
       if (N > 35) {
-        return String.format(script, Integer.toString(35)); 
+        return String.format(script, Integer.toString(35));
       }
       String s = String.format(script, Integer.toString(N++)); 
-      System.out.println(String.format(script, Integer.toString(N++)));
+      System.out.println(String.format(script, Integer.toString(N)));
       return s; 
     }
 
     /**
      * Simple post request for getting back result of the action.
-     *
      */
     @POST
     @Consumes("text/plain")
