@@ -47,8 +47,8 @@ while True:
     cmd = urllib2.urlopen(sm_service).read()
     p = Popen(cmd, shell=True, stdout=PIPE, stderr=PIPE)
     out, err = p.communicate()
-    #print "executing = '", (cmd), "'"
-    #print out.rstrip(), err.rstrip()
+    print "executing = '", (cmd), "'"
+    print out.rstrip(), err.rstrip()
 
     #req = urllib2.Request(sm_service + "/script", urllib.urlencode(out.rstrip()))
     #response = urllib2.urlopen(req)

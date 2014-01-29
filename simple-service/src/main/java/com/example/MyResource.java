@@ -8,7 +8,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.core.MediaType;
 
-
+import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -33,6 +33,8 @@ public class MyResource {
     @Produces(MediaType.TEXT_PLAIN)
     public String getIt() {
       String val; 
+      UUID idOne = UUID.randomUUID();
+
       synchronized (this) {
         System.out.println(this.hashCode());
         if (incr > (commands.length - 1))
@@ -47,6 +49,10 @@ public class MyResource {
     @Path("script")
     @Produces(MediaType.TEXT_PLAIN)
     public String getScript() {
+      UUID idOne = UUID.randomUUID();
+      if (N > 35) {
+        return String.format(script, Integer.toString(35)); 
+      }
       String s = String.format(script, Integer.toString(N++)); 
       System.out.println(String.format(script, Integer.toString(N++)));
       return s; 
