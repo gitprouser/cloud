@@ -25,6 +25,9 @@ public class FileSMTaskServerImpl implements SMTaskServer{
      */
     String[] smAgentDetails = new String[2];
 
+
+    //TODO timeout for each job queue... We should check if the job executed or not.
+
     /**
      * The current Job ID being executed by the SMAgent
      */
@@ -34,6 +37,8 @@ public class FileSMTaskServerImpl implements SMTaskServer{
      * pointer on file
      */
     private Scanner sc;
+
+    private File logDir;
 
     /**
      * Every SMAgent on client side will have a SMTaskServer on server.
@@ -49,6 +54,8 @@ public class FileSMTaskServerImpl implements SMTaskServer{
         smAgentDetails[0] = smAgentID;
         smAgentDetails[1] = smAgentIP;
         sc = new Scanner(new File("CommandList"));
+        logDir = new File("/tmp/SMAgent" + smAgentID);
+        logDir.mkdirs();
     }
 
     /**
@@ -92,10 +99,11 @@ public class FileSMTaskServerImpl implements SMTaskServer{
     /**
      * Updates the Job as completed.
      *
-     * @param json
+     * @param
      * @return
      */
     public boolean receiveTaskStatus(Map<String, String> taskStatus) {
+
         return false;
     }
 

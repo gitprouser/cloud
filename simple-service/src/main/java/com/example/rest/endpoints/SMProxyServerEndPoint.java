@@ -2,6 +2,7 @@ package com.example.rest.endpoints;
 
 
 import javax.ws.rs.core.MediaType;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.ws.rs.GET;
@@ -12,6 +13,11 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+
+import com.example.entities.SMTaskServer;
+import com.example.rest.json.GenerateJSON;
+import com.example.rest.json.ParseJSON;
+import com.example.utils.SMProxyTaskMgr;
 import org.codehaus.jettison.json.JSONObject;
 
 
@@ -34,6 +40,18 @@ public class SMProxyServerEndPoint {
     @Produces(MediaType.APPLICATION_JSON)
     public JSONObject getNextTask() {
         return null;
+    }
+
+    /**
+     * Initial handshake from SMAgent and SMProxyserver
+     */
+    @POST
+    @Path("hello-world")
+    @Produces(MediaType.APPLICATION_JSON)
+    public JSONObject getFirstHandShake(JSONObject salt) {
+        Map<String, String> firstMsg = ParseJSON.parseFirstReq(salt);
+        SMTaskServer smTaskServer = SMProxyTaskMgr.SM_PROXY_TASK_MGR.getTaskServerForSMAgent(firstMsg);
+        return GenerateJSON.getNextTaskJSON(smTaskServer.getNextTask());
     }
 
     /**

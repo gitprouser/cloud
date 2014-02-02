@@ -18,9 +18,11 @@ import java.util.Map;
  */
 
 
-public class SMProxyTaskMgr {
+public enum SMProxyTaskMgr {
+    SM_PROXY_TASK_MGR;
+
    // A map between {FileSMTaskServerImpl : SMAgentID}
-   private Map<SMTaskServer, Integer> taskServerTable = new HashMap <SMTaskServer, Integer>();
+   private Map<Integer, SMTaskServer> taskServerTable = new HashMap <Integer, SMTaskServer>();
 
     /**
      * Update the taskServerTable
@@ -29,12 +31,12 @@ public class SMProxyTaskMgr {
      */
    public SMTaskServer getTaskServerForSMAgent(Map<String, String> agentReq) {
        /**
-        * 1.) if table entry does not exists
+        * 1.) If table entry does not exists
         *   1.1.) Register the SMAgent via SMRegistration
         *   1.2.) Create new SMTaskServer for SMAgent
         *   1.4.) Call setTaskServerForSMAgent synchronously and update table.
         *   1.5.) call the FileSMTaskServerImpl.getNextTask()
-        * 2.) if Table entry exits
+        * 2.) If Table entry exits
         *   2.1) Get Instance and call the getNextTask()
         */
        return null;

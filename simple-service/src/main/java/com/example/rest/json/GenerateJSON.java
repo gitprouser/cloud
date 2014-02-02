@@ -20,7 +20,7 @@ public final class GenerateJSON {
      *
      * @return
      */
-    public JSONObject getNextTaskJSON(Map<String, String> json) {
+    public static JSONObject getNextTaskJSON(Map<String, String> json) {
         return null;
     }
 
@@ -30,7 +30,7 @@ public final class GenerateJSON {
      *
      * @return
      */
-    public JSONObject getTaskStatusJSON(Map<String, String> json) {
+    public static JSONObject getTaskStatusJSON(Map<String, String> json) {
         throw new RuntimeException("Unimplemented for now");
     }
 
