@@ -1,7 +1,9 @@
 package com.example.rest.json;
 
+import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -14,6 +16,8 @@ import java.util.Map;
  */
 
 public class ParseJSON<T> {
+
+    private final static String outputData = "output";
 
     /**
      * First time handshake from SMAgent with SMProxyServer
@@ -37,5 +41,22 @@ public class ParseJSON<T> {
      */
     public static Map<String, String> parseTaskStatusJSON(JSONObject json) {
         return null;
+    }
+
+    /**
+     *
+     *
+     */
+    public Map<String, String> parseResult(JSONObject json) throws JSONException {
+        Map<String, String> result = new HashMap<String, String>();
+        Iterator<JSONObject> iter = json.keys();
+        while(iter.hasNext()) {
+            JSONObject key = iter.next();
+            if (iter.next().toString() == outputData)  {
+                result.put(outputData, (String) json.get(key.toString()));
+            }
+
+        }
+        return result;
     }
 }

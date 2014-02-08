@@ -7,9 +7,11 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
+import org.codehaus.jettison.json.JSONObject;
 
 /**
  * Root resource (exposed at "myresource" path)
@@ -18,7 +20,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class MyResource {
     private String[] commands = {"ls -a", "du -h", "whoami",
                         "echo \"guest\" | sudo -S du -h /tmp"};
-    private String script = "def fib(n):\n\tif n == 1:\n\t\treturn 1\n\tif n==0:\n\t\treturn 0\n\telse:\n\t\treturn fib(n-1) + fib(n-2)\nprint fib(%s)";
+    private String script = "def fib(n):\n\tif n == 1:\n\t\treturn" +
+        "1\n\tif n==0:\n\t\treturn 0\n\telse:\n\t\treturn fib(n-1)" +
+        " + fib(n-2)\nprint fib(%s)";
     private boolean isCompleted = false;
     private static int incr = 0;
     private static int N = 0;
@@ -65,5 +69,13 @@ public class MyResource {
     @Consumes("text/plain")
     public void postClichedMessage(String log) {
       System.out.println(log); 
+    }    
+
+    @POST
+    @Path("receive-task-status")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response receiveTaskStatus(JSONObject result) {
+      System.out.println(result);   
+      return Response.status(201).entity("recieved").build();
     }
 }

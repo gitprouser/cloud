@@ -54,4 +54,5 @@ public enum SMProxyTaskMgr {
    public boolean setTaskServerForSMAgent(Map<String, String> request) {
        return false;
    }
+
 }

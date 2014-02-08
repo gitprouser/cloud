@@ -1,16 +1,11 @@
 package com.example.rest.endpoints;
 
 
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.Map;
 import java.util.UUID;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.PUT;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.Consumes;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -18,6 +13,7 @@ import com.example.entities.SMTaskServer;
 import com.example.rest.json.GenerateJSON;
 import com.example.rest.json.ParseJSON;
 import com.example.utils.SMProxyTaskMgr;
+import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 
 
@@ -36,17 +32,17 @@ public class SMProxyServerEndPoint {
      * @return
      */
     @GET
-    @Path("get-next-task")
+    @Path("hello-world")
     @Produces(MediaType.APPLICATION_JSON)
-    public JSONObject getNextTask() {
-        return null;
+    public String getNextTask() {
+        return "helloworld";
     }
 
     /**
      * Initial handshake from SMAgent and SMProxyserver
      */
     @POST
-    @Path("hello-world")
+    @Path("handshake")
     @Produces(MediaType.APPLICATION_JSON)
     public JSONObject getFirstHandShake(JSONObject salt) {
         Map<String, String> firstMsg = ParseJSON.parseFirstReq(salt);
@@ -58,10 +54,11 @@ public class SMProxyServerEndPoint {
      *
      */
     @GET
-    @Path("get-task-details")
+    @Path("get-Task-Details")
     @Produces(MediaType.APPLICATION_JSON)
-    public String getTaskDetails() {
-        return null;
+    public String getTaskDetails() throws Exception {
+        JSONObject retVal = GenerateJSON.getScriptletJSON();
+        return retVal.toString();
     }
 
     /**
@@ -70,7 +67,10 @@ public class SMProxyServerEndPoint {
     @POST
     @Path("receive-task-status")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response receiveTaskStatus(JSONObject result) {
+    public Response receiveTaskStatus(String result) throws JSONException {
+        System.out.println(result);
+        //Map<String, String> resMap = ParseJSON.parseResult(result);
+        //System.out.println(resMap.get("output"));
         return Response.status(201).entity("recieved").build();
     }
 }
