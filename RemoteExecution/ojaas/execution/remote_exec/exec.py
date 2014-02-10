@@ -6,8 +6,8 @@
 ##
 from ast import literal_eval
 from subprocess import CalledProcessError, check_output
-import urllib
-import json
+#import urllib
+#import json
 
 import urllib2
 import sys
@@ -28,12 +28,16 @@ def loadjson(json_str):
 # For now writing to a file.
 # this will be streamed for future usage
 def embedded_python_script(dict):
-    arg = dict["data-bag"]["N"]
     py_src = dict["script"]
 
     with open('/tmp/script.py', 'w+') as f:
-        f.write(py_src.replace("@N@", arg))
-
+        f.write("\ndict = {")
+        for vals in dict["data-bag"]:
+                f.write("\n\t\"" + vals + "\":" + str(dict["data-bag"].get(vals)) + ",")
+        f.write("\n}")
+        for x in xrange(2):
+            f.write("\n")
+        f.write("\n" + py_src)
     try:
         ans = check_output(['python', '/tmp/script.py'])
     except CalledProcessError, e:

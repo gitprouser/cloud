@@ -51,12 +51,13 @@ public final class GenerateJSON {
     public static JSONObject getScriptletJSON() throws Exception {
         String scriptlet = "def fib(n):\n\tif n == 1:\n\t\treturn 1" +
                 "\n\tif n==0:\n\t\treturn 0\n\telse:\n\t\treturn fib(n-1)" +
-                " + fib(n-2)\nprint fib(@N@)";
+                " + fib(n-2)\n\nprint(fib(dict[\"N\"]))";
         JSONObject payload = new JSONObject();
 
         try {
             JSONObject var = new JSONObject();
             var.put("N", "30");
+            var.put("M", "15");
             payload.put("data-bag", var);
             payload.put("script", scriptlet);
         } catch (JSONException e) {
