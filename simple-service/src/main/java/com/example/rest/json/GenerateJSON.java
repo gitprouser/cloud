@@ -17,6 +17,15 @@ import java.util.Map;
 //TODO append doc with actual json format
 
 public final class GenerateJSON {
+    private static String scriptlet = "def fib(n):\n\tif n == 1:\n\t\treturn 1" +
+        "\n\tif n==0:\n\t\treturn 0\n\telse:\n\t\treturn fib(n-1)" +
+        " + fib(n-2)\n\nprint(fib(__data_bag[\"N\"]))\n\nprint(fib(__data_bag[\"M\"]))";//\n\nprint keys, value for " +
+
+    /*String ssh_command = "def fib(n):\n\tif n == 1:\n\t\treturn 1" +
+        "\n\tif n==0:\n\t\treturn 0\n\telse:\n\t\treturn fib(n-1)" +
+        " + fib(n-2)\n\nprint(fib(__data_bag[\"N\"]))\n\nprint(fib(__data_bag[\"M\"]))";
+    */
+
 
     /**
      * Generates a JSON with the command execution payload for the SMAgent.
@@ -44,14 +53,18 @@ public final class GenerateJSON {
      *      "databag : [
      *          "variables" : "",
      *          "variable2" : ""
+     *          // NESTING the data bag 
+     *          "variable3" : {
+     *            "var1" : "",
+     *            "var2" : "",
+     *          } 
      *      ],
      *      "script" : ""
      * }
+     *
+     *
      */
     public static JSONObject getScriptletJSON() throws Exception {
-        String scriptlet = "def fib(n):\n\tif n == 1:\n\t\treturn 1" +
-                "\n\tif n==0:\n\t\treturn 0\n\telse:\n\t\treturn fib(n-1)" +
-                " + fib(n-2)\n\nprint(fib(dict[\"N\"]))";
         JSONObject payload = new JSONObject();
 
         try {
