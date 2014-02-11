@@ -71,6 +71,6 @@ public class SMProxyServerEndPoint {
         System.out.println(result);
         //Map<String, String> resMap = ParseJSON.parseResult(result);
         //System.out.println(resMap.get("output"));
-        return Response.status(201).entity("recieved").build();
+        return Response.status(201).entity("received").build();
     }
 }
