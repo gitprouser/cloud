@@ -1,33 +1,33 @@
-## Simple script which hits the rest endpoint
-## gets the json object
-##  - Connects to a server.
-##   - Writes to a file.
-##  -
-##
 #from ast import literal_eval
-#import urllib
 import json
-from subprocess import CalledProcessError, check_output
+from subprocess import Popen, PIPE
 import urllib2
+import sys
 
 url = "http://localhost:8080/myapp/smproxy"
+usr_script = "/tmp/inp_script.py"
+gen_script = "/tmp/gen_script.py"
+py_path = sys.executable
 
 
 def embedded_python_script(dict):
     py_src = dict["script"]
-    vars = dict["data-bag"]
+    with open(usr_script, 'w+') as f:
+        f.write(py_src)
+    with open(gen_script, 'w+') as f:
+        f.write("\n\n".join(["## GENERATED SCRIPT",  "import %s" % (usr_script[5:-3]),
+                             "__data_bag = " + json.dumps(dict["data-bag"]),
+                             "## Logger", "%s.execute(__data_bag)" % (usr_script[5:-3])]))
 
-    with open('/tmp/script.py', 'w+') as f:
-        f.write("\n__data_bag = {")
-        f.write(("\n\t").join(["\"" + key + "\":" + vars.get(key) + "," for key in vars]))
-        f.write("\n\n".join(["}", py_src]))
-    try:
-        ans = check_output(['python', '/tmp/script.py'])
-    except CalledProcessError, e:
-        print ("python script errored with...", e, e.returncode)
-    finally:
-        f.close()
-    return ans
+    # ans = check_output("[python gen_script]", subprocess.stderr=STDOUT)
+    process = Popen("%s %s" % (py_path, gen_script), shell=True, stdout=PIPE, stderr=PIPE)
+    out, err = process.communicate()
+    errcode = process.returncode
+
+    f.close()
+    if err:
+        return "errocode=" + str(errcode) + "err=" + err
+    return "errocode = " + str(errcode) + "\nstdout = " + out
 
 
 # Posting to rest end /receive-task-status

@@ -17,14 +17,9 @@ import java.util.Map;
 //TODO append doc with actual json format
 
 public final class GenerateJSON {
-    private static String scriptlet = "def fib(n):\n\tif n == 1:\n\t\treturn 1" +
+    private static String scriptlet = "import math\ndef fib(n):\n\tif n == 1:\n\t\treturn 1" +
         "\n\tif n==0:\n\t\treturn 0\n\telse:\n\t\treturn fib(n-1)" +
-        " + fib(n-2)\n\nprint(fib(__data_bag[\"N\"]))\n\nprint(fib(__data_bag[\"M\"]))";//\n\nprint keys, value for " +
-
-    /*String ssh_command = "def fib(n):\n\tif n == 1:\n\t\treturn 1" +
-        "\n\tif n==0:\n\t\treturn 0\n\telse:\n\t\treturn fib(n-1)" +
-        " + fib(n-2)\n\nprint(fib(__data_bag[\"N\"]))\n\nprint(fib(__data_bag[\"M\"]))";
-    */
+        " + fib(n-2)\n\ndef execute(dict):\n\tprint fib(dict[\"nested\"][\"k\"])\nprint math.sin(30)";
 
 
     /**
@@ -69,8 +64,12 @@ public final class GenerateJSON {
 
         try {
             JSONObject var = new JSONObject();
-            var.put("N", "30");
-            var.put("M", "15");
+            var.put("N", 30);
+            var.put("M", 15);
+            JSONObject nested = new JSONObject();
+            nested.put("k", 10);
+            nested.put("i", 10);
+            var.put("nested", nested);
             payload.put("data-bag", var);
             payload.put("script", scriptlet);
         } catch (JSONException e) {
