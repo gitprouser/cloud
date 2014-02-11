@@ -4,6 +4,7 @@ import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.io.*;
@@ -90,10 +91,16 @@ public final class GenerateJSON {
     private static String readFile() {
       byte[] b = new byte[10000];
       BufferedInputStream bis = null;
+      byte[] copyByteArray = null;
       try {
         bis = new BufferedInputStream( new FileInputStream(new File("scriptlet.py")));
-          for (int off = 0, len = 1024; off < b.length && bis.read(b, off, len)  > -1; off+= len)
-              ;
+          int off = 0;
+          int len = 1024;
+
+          while(off < b.length && bis.read(b, off, len)  > -1) {
+              off+= len;
+          }
+          copyByteArray = Arrays.copyOf(b, len);
       } catch (IOException e) {
         System.out.println("Couldn't copy the entire file" + e.getMessage());     
       } finally {
@@ -102,9 +109,10 @@ public final class GenerateJSON {
             System.out.println("buffered input stream did not close");
         }
       }
-      String retVal = new String(b);
-      System.out.println(retVal);
-      return retVal;
+      if (copyByteArray != null) {
+          return (new String(copyByteArray).trim());
+      }
+      return "print \"No script executed...\"";
     }
 
 }
