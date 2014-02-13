@@ -26,7 +26,7 @@ def embedded_python_script(dict):
 
     f.close()
     if err:
-        return "errocode=" + str(errcode) + "err=" + err
+        return "errocode=" + str(errcode) + "\nerr=" + err
     return "errocode = " + str(errcode) + "\nstdout = " + out
 
 
