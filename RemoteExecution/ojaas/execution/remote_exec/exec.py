@@ -1,4 +1,5 @@
 #from ast import literal_eval
+from Queue import Queue
 import json
 from subprocess import Popen, PIPE
 import urllib2
@@ -43,14 +44,15 @@ def post(result):
     return response
 
 
-try:
-    data = urllib2.urlopen(url + "/get-Task-Details").read()
-    result = embedded_python_script(json.loads(data))
-    print post(result)
-except urllib2.HTTPError, e:
-    print "HTTP error: %s" % e
-except urllib2.URLError, e:
-    print "Network error: %s" % e.reason.args[1]
+while(True):
+    try:
+        data = urllib2.urlopen(url + "/get-Task-Details").read()
+        result = embedded_python_script(json.loads(data))
+        print post(result)
+    except urllib2.HTTPError, e:
+        print "HTTP error: %s" % e
+    except urllib2.URLError, e:
+        print "Network error: %s" % e.reason.args[1]
 
 
 #def loadjson(json_str):
