@@ -1,0 +1,35 @@
+<2014-02-26 14:10:32,326> <DEBUG> <CPSLogger> <Executing jobs under the jobs directory> 
+<2014-02-26 14:10:32,326> <DEBUG> <CPSLogger> <Executing job job1> 
+<2014-02-26 14:10:32,328> <DEBUG> <CPSLogger> <Executing job job2> 
+<2014-02-26 14:10:32,329> <DEBUG> <CPSLogger> <Executing job job3> 
+<2014-02-26 14:10:32,332> <DEBUG> <CPSLogger> <Executing job job4> 
+<2014-02-26 14:10:32,334> <DEBUG> <CPSLogger> <Executing job job5> 
+<2014-02-26 14:10:32,336> <DEBUG> <CPSLogger> <Completed...> 
+<2014-02-27 04:19:10,473> <DEBUG> <CPSLogger> <Executing jobs under the jobs directory> 
+<2014-02-27 04:19:10,473> <DEBUG> <CPSLogger> <Executing job job1> 
+<2014-02-27 04:19:10,496> <DEBUG> <CPSLogger> <Executing job job2> 
+<2014-02-27 04:19:10,503> <DEBUG> <CPSLogger> <Executing job job3> 
+<2014-02-27 04:19:10,506> <DEBUG> <CPSLogger> <Executing job job4> 
+<2014-02-27 04:19:10,508> <DEBUG> <CPSLogger> <Executing job job5> 
+<2014-02-27 04:19:10,511> <DEBUG> <CPSLogger> <Completed...> 
+<2014-02-27 04:19:34,777> <DEBUG> <CPSLogger> <Executing jobs under the jobs directory> 
+<2014-02-27 04:19:34,777> <DEBUG> <CPSLogger> <Executing job job1> 
+<2014-02-27 04:19:34,779> <DEBUG> <CPSLogger> <Executing job job2> 
+<2014-02-27 04:19:34,781> <DEBUG> <CPSLogger> <Executing job job3> 
+<2014-02-27 04:19:34,782> <DEBUG> <CPSLogger> <Executing job job4> 
+<2014-02-27 04:19:34,784> <DEBUG> <CPSLogger> <Executing job job5> 
+<2014-02-27 04:19:34,786> <DEBUG> <CPSLogger> <Completed...> 
+<2014-02-27 04:23:46,602> <DEBUG> <CPSLogger> <Executing jobs under the jobs directory> 
+<2014-02-27 04:23:46,602> <DEBUG> <CPSLogger> <Executing job job1> 
+<2014-02-27 04:23:46,604> <DEBUG> <CPSLogger> <Executing job job2> 
+<2014-02-27 04:23:46,605> <DEBUG> <CPSLogger> <Executing job job3> 
+<2014-02-27 04:23:46,607> <DEBUG> <CPSLogger> <Executing job job4> 
+<2014-02-27 04:23:46,609> <DEBUG> <CPSLogger> <Executing job job5> 
+<2014-02-27 04:23:46,610> <DEBUG> <CPSLogger> <Completed...> 
+<2014-02-27 04:29:57,812> <DEBUG> <CPSLogger> <Executing jobs under the jobs directory> 
+<2014-02-27 04:29:57,812> <DEBUG> <CPSLogger> <Executing job job1> 
+<2014-02-27 04:29:57,814> <DEBUG> <CPSLogger> <Executing job job2> 
+<2014-02-27 04:29:57,816> <DEBUG> <CPSLogger> <Executing job job3> 
+<2014-02-27 04:29:57,818> <DEBUG> <CPSLogger> <Executing job job4> 
+<2014-02-27 04:29:57,821> <DEBUG> <CPSLogger> <Executing job job5> 
+<2014-02-27 04:29:57,822> <DEBUG> <CPSLogger> <Completed...> 

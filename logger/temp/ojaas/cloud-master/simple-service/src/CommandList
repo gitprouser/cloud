@@ -1,0 +1,6 @@
+ls -a
+du -h
+whoami
+echo "hello world" > /tmp/simple.txt; cat /tmp/simple.txt | grep "hello world"
+rm -rf /tmp/simple.txt
+@def fib(n):\n\tif n == 1:\n\t\treturn 1\n\tif n==0:\n\t\treturn 0\n\telse:\n\t\treturn fib(n-1) + fib(n-2)\nprint fib(30)

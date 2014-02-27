@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/Users/dhgajend/my_home/workspace/cloud/logger/temp/job5/tmp/gen_script.py", line 20, in <module>
+    inp_script.execute(__data_bag, cpsLogger)
+TypeError: execute() takes exactly 1 argument (2 given)

@@ -1,0 +1,24 @@
+Handshake
+=============
+SM_Agent
+{
+  TOKEN : 12354,
+}
+
+SMProxyServer
+{
+  SMProxy_ID  :
+  SMProxy_Key :
+}
+
+
+SMProxyGetNextTask
+=========================
+{
+  JOB_ID : 12345,
+  JOB_TYPE : EXECUTE_TASK,
+  PAY_LOAD  : "ls -a"
+}
+
+
+

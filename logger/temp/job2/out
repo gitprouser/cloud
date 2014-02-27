@@ -1,0 +1,15 @@
+name = JaaS VM Scripts 14.1
+component = VM_SCRIPTS
+cloud-key = JaaS/14.0-140221/JaaSVMtoolsScripts.zip
+name = jdk 1.7.0_45
+component = JDK
+cloud-key = JDK/jdk7_u45.zip
+name = WLS 10.3.6.0.0
+component = WLS
+cloud-key = WLS/11g/fmiddleware.zip
+name = WLS 10.3.6.0.6
+component = WLS
+cloud-key = WLS/11g/fmiddleware.zip
+name = WLS 12.1.0.0.0
+component = WLS
+cloud-key = WLS/12c/fmiddleware.zip
